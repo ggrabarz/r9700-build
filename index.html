@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R9700 build program — documentation</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #171a21;
+    --line: #2a2f3a;
+    --text: #e7e9ee;
+    --muted: #9aa3b2;
+    --amber: #ffb300;
+    --purple: #b39ddb;
+    --orange: #ff8a4c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  main { max-width: 980px; width: 100%; }
+  h1 { font-size: 2rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); margin: 0 0 36px; max-width: 62ch; }
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  a.card {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  a.card:hover { border-color: var(--amber); transform: translateY(-2px); }
+  .tag { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  h2 { font-size: 1.2rem; margin: 10px 0 8px; }
+  p { margin: 0; color: var(--muted); }
+  .metrics { display: flex; gap: 18px; margin-top: 18px; font-size: .85rem; color: var(--muted); }
+  .metrics b { color: var(--text); display: block; font-size: 1.05rem; }
+  footer { margin-top: 36px; color: #6b7280; font-size: .8rem; }
+  .hb h2 { color: var(--purple); }
+  .sw h2 { color: var(--orange); }
+</style>
+</head>
+<body>
+<main>
+  <h1>AMD Radeon AI PRO R9700 build program</h1>
+  <p class="sub">Two documentation sets from the same research program: the state-of-the-art
+  handbook for building and operating a 4-card R9700 inference node, and the evidence wiki
+  produced by thirty-four automated internet sweeps that catalogued every real quad build
+  they could verify.</p>
+
+  <div class="grid">
+    <a class="card hb" href="handbook/">
+      <span class="tag">Handbook</span>
+      <h2>R9700 SOTA Handbook</h2>
+      <p>The verified state of the art: hardware, engines, models, quantisation, storage,
+      the 52-build registry, cost per million tokens, gotchas and the three recommended builds.</p>
+      <div class="metrics">
+        <span><b>13</b>pages</span>
+        <span><b>52</b>builds indexed</span>
+        <span><b>3</b>recommended builds</span>
+      </div>
+    </a>
+
+    <a class="card sw" href="sweep/">
+      <span class="tag">Evidence wiki</span>
+      <h2>The /goal sweep corpus</h2>
+      <p>Everything the 34 sweep sessions found: 52 real builds, platform and lane findings,
+      measured performance, engine recipes, corrections and fakes, open leads, and the full
+      session ledger.</p>
+      <div class="metrics">
+        <span><b>34</b>sessions</span>
+        <span><b>33</b>rounds</span>
+        <span><b>~300</b>evidence files</span>
+      </div>
+    </a>
+  </div>
+
+  <footer>Built with MkDocs and Material for MkDocs. Both sites are static and self-contained.</footer>
+</main>
+</body>
+</html>

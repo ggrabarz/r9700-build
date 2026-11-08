@@ -1,0 +1,1502 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="State-of-the-art findings from the R9700 build research program">
+      
+      
+        <meta name="author" content="R9700 build program">
+      
+      
+      
+        <link rel="prev" href="../evidence/">
+      
+      
+        <link rel="next" href="../sources/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Session ledger - R9700 SOTA Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#session-ledger" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="R9700 SOTA Handbook" class="md-header__button md-logo" aria-label="R9700 SOTA Handbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            R9700 SOTA Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Session ledger
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="R9700 SOTA Handbook" class="md-nav__button md-logo" aria-label="R9700 SOTA Handbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    R9700 SOTA Handbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verdict/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verdict
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quantisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage & streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build registry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost & TCO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gotchas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gotchas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence & corrections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session ledger
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session ledger
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-program-in-six-waves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The program in six waves
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The program in six waves">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-wave-changed-in-one-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each wave changed in one line
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ledger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ledger
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-threads-that-mattered-most" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The threads that mattered most
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-24-empty-threads-prove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the 24 empty threads prove
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-program-in-six-waves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The program in six waves
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The program in six waves">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-wave-changed-in-one-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each wave changed in one line
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ledger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ledger
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-threads-that-mattered-most" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The threads that mattered most
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-24-empty-threads-prove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the 24 empty threads prove
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="session-ledger">Session ledger<a class="headerlink" href="#session-ledger" title="Permanent link">&para;</a></h1>
+<p><strong>63 T3 threads</strong> ran in this project between <strong>2026-10-22</strong> and <strong>2026-11-07</strong>:
+<strong>2,453 messages</strong>, <strong>659 assistant turns</strong>, <strong>39 threads that produced output</strong>, and
+<strong>24 that died before their first token</strong>.</p>
+<p>Every row has a full transcript in <code>session-archive/threads/</code>, with the mapping in
+<code>session-archive/index.json</code>. The archive is the raw record; this page is the index to
+what each session actually contributed to the current state of the art.</p>
+<div class="admonition note">
+<p class="admonition-title">Reading a zero-output thread</p>
+<p>A thread with <strong>0 assistant messages</strong> is a model route that died — a guardrail
+block, a silent gateway death, or account-wide budget exhaustion — not a session that
+chose to do nothing. The output file may still exist because a later route or the
+supervisor wrote it. <code>research/AGENTS.md</code> records the route history.</p>
+</div>
+<hr />
+<h2 id="the-program-in-six-waves">The program in six waves<a class="headerlink" href="#the-program-in-six-waves" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Wave</th>
+<th>Dates</th>
+<th>Threads</th>
+<th>What it settled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 — Eight-agent survey</strong></td>
+<td>22 Oct</td>
+<td>9</td>
+<td>The R9700 silicon facts, the engine survey, the ROCm/kernel stack, the five model architectures, and the first storage/topology design. Five of eight routes died; the files were completed by later routes.</td>
+</tr>
+<tr>
+<td><strong>2 — The build-guide delta</strong></td>
+<td>22 Oct</td>
+<td>9</td>
+<td>A real 93-page, three-unit quad-R9700 build guide arrived. All eight agents re-derived their slices against it. It <strong>overturned nine wave-1 conclusions</strong>, including the octo, the 300 W assumption, <code>iommu=pt</code>, and "Strata is the only engine".</td>
+</tr>
+<tr>
+<td><strong>3 — The octo verdict</strong></td>
+<td>23–24 Oct</td>
+<td>10</td>
+<td>Eight slices answered "8 cards in one chassis?" <strong>0 unconditional yes, 1 no, 7 yes-if</strong> — each conditional on a <em>different</em> model than the one the proven quad serves. The answer became <strong>two quads</strong>.</td>
+</tr>
+<tr>
+<td><strong>4 — Three platforms</strong></td>
+<td>24 Oct</td>
+<td>28</td>
+<td>R9700 vs V100 SXM2 vs CMP 170HX, on price, TCO, power, kernels and feasibility. Five of six agents died on budget; the late V100 return <strong>corrected the estimate by 18×</strong>.</td>
+</tr>
+<tr>
+<td><strong>5 — The real-build registry</strong></td>
+<td>30 Oct – 7 Nov</td>
+<td>6</td>
+<td>The Strata sizing review and a 31-round internet sweep that produced <strong>52 verified 4-card builds, B1–B52</strong>, plus the per-entry evidence in <code>sources/</code>.</td>
+</tr>
+<tr>
+<td><strong>6 — Consolidation</strong></td>
+<td>7 Nov</td>
+<td>1</td>
+<td>This handbook, the session archive, and the retirement of the other 62 sessions.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-each-wave-changed-in-one-line">What each wave changed in one line<a class="headerlink" href="#what-each-wave-changed-in-one-line" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Wave 1</strong> got the silicon right — 640 GB/s, 64 CU, 191/383 TF, gfx1201 — and the
+   model shapes right, but assumed an octo and missed the production engine.</li>
+<li><strong>Wave 2</strong> replaced the octo with a quad, 300 W with 210 W, DDR5 with DDR4-2666, the
+   multi-SSD array with one 1 TB drive, and "Strata only" with <strong>vLLM-Radiance</strong>.</li>
+<li><strong>Wave 3</strong> proved the octo is a <strong>single-model machine</strong> (GLM-5.3-Flash TP=8), not a
+   platform upgrade: +17 % $/GPU, a 20.9 % sync tax, no air-cooling path, and Qwen3.8-27B
+   refused at TP=8 by name.</li>
+<li><strong>Wave 4</strong> found that the cheapest 256 GB of fabric-connected memory is a used
+   <strong>Supermicro 4029GP-TVRT at $8,500</strong>, but it is 2017 silicon with no FP8/FP4 — so it
+   wins on DeepSeek and dense Qwen and loses 4.4× on GLM.</li>
+<li><strong>Wave 5</strong> replaced estimates with <strong>52 real builds</strong>: the $10,733.91 proven quad, the
+   $7,035 cheapest quad, the 1,192 tok/s Radiance monolith, and the corrections that came
+   from owners (B3's full body, B49's TP4, the retracted djdeniro figure).</li>
+<li><strong>Wave 6</strong> distilled all of it into the pages you are reading and archived the raw
+   transcripts.</li>
+</ol>
+<hr />
+<h2 id="the-ledger">The ledger<a class="headerlink" href="#the-ledger" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Date</th>
+<th>Thread</th>
+<th>Route</th>
+<th style="text-align: right;">Msgs</th>
+<th>Contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>2026-10-22</td>
+<td><code>93b2a1e8</code></td>
+<td>freellmapi / logfare</td>
+<td style="text-align: right;">255</td>
+<td><strong>Main program.</strong> Wave-1 supervision, the build-guide distribution, <code>docs/ARCHITECTURE.md</code>, <code>docs/SPECS.md</code>, the self-contained animation, both verification gates, and the wave-2 integration. Later the three-platform comparison and the final V100 correction.</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>2026-10-22</td>
+<td>A1 w1</td>
+<td><code>opencode/glm-5.3-flash-free</code></td>
+<td style="text-align: right;">25</td>
+<td>R9700 silicon, server platform, BMC, BOM. Caught the brief's 512-bit/1.792 TB/s error and established <strong>256-bit / 640 GB/s</strong>, 64 CU, 191/383 TF, gfx1201, ROMED8-2T lane budgets.</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>2026-10-22</td>
+<td>A2 w1</td>
+<td><code>openrouter/qwen3.8-max</code></td>
+<td style="text-align: right;">1</td>
+<td>Route blocked by the workspace guardrail before the first token. The engine survey was later written on <code>beam-free</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>2026-10-22</td>
+<td>A3 w1</td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">4</td>
+<td>ROCm 10.1 / gfx1201 stack: AITER is experimental, INT4 has no shipping kernel, the bandwidth/compute crossover is <strong>M ≈ 300</strong>, 46 sources.</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>2026-10-22</td>
+<td>A4 w1</td>
+<td><code>openrouter/qwen3.8-27b</code></td>
+<td style="text-align: right;">1</td>
+<td>Route blocked. The Qwen3.8 architecture file was later written on <code>beam-free</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>2026-10-22</td>
+<td>A5 w1</td>
+<td><code>openrouter/kimi-k3</code></td>
+<td style="text-align: right;">1</td>
+<td>Route blocked. Kimi K3 was later written on <code>mimo-v2.6-flash-free</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>2026-10-22</td>
+<td>A6 w1</td>
+<td><code>openrouter/glm-5.3</code></td>
+<td style="text-align: right;">1</td>
+<td>Route blocked. GLM-5.3 was later written on <code>flint-40b-free</code> / <code>glm-5.3-flash-free</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>2026-10-22</td>
+<td>A7 w1</td>
+<td><code>openrouter/deepseek-v4.1-flash</code></td>
+<td style="text-align: right;">1</td>
+<td>Route blocked. DeepSeek V4.1 was later written on <code>freedeepseek-v4.1-flash</code> and then <code>opencode</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>2026-10-22</td>
+<td>A8 w1</td>
+<td><code>opencode/minimax-m3.1-flash-free</code></td>
+<td style="text-align: right;">8</td>
+<td>Storage, streaming and topology, 988 lines: NVMe is a <strong>capacity</strong> tier, the 16-stage pipeline, the tier bandwidths, and the first residency arithmetic.</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>2026-10-22</td>
+<td>A1 w2</td>
+<td><code>opencode/glm-5.3-flash-free</code></td>
+<td style="text-align: right;">7</td>
+<td>Guide delta: <strong>4-GPU nodes on Rome's 64 lanes</strong>, 210 W cap, DDR4-2666, one 1 TB NVMe, software fan curve. Platform conclusion overturned.</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>2026-10-22</td>
+<td>A2 w2</td>
+<td><code>opencode/beam-free</code></td>
+<td style="text-align: right;">2</td>
+<td>Found <strong>Radiance / vLLM-Radiance</strong> (<code>libr4d</code>, 25 RDNA4 kernels). MXFP4 reachable; Mamba-align prefix cache ~3.6× TTFT; layer split loses on throughput.</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>2026-10-22</td>
+<td>A4 w2</td>
+<td><code>opencode/beam-free</code></td>
+<td style="text-align: right;">3</td>
+<td><strong>TP=2 is forced by memory</strong>, not preferred: 262 K context needs FP8 weights <em>and</em> FP8 KV to fit 4 GiB/card.</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>2026-10-22</td>
+<td>A3 w2</td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">10</td>
+<td>The guide runs <strong>no host ROCm</strong> — ROCm lives only in the container. Radiance image details, kernel corrections, 1,468 lines.</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>2026-10-22</td>
+<td>A5 w2</td>
+<td><code>opencode/mimo-v2.6-flash-free</code></td>
+<td style="text-align: right;">3</td>
+<td>"Kimi" appears <strong>once</strong> in 93 pages with no version or result. Kimi's verdict: 0.2–2.9 tok/s vs 164 for Qwen on the proven stack.</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>2026-10-22</td>
+<td>A8 w2</td>
+<td><code>opencode/minimax-m3.1-flash-free</code></td>
+<td style="text-align: right;">8</td>
+<td>Storage tier overturned: the 8-drive array is dead for this stack; <strong>one 1 TB 990 PRO</strong> holds the checkpoint.</td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>2026-10-22</td>
+<td>A6 w2</td>
+<td><code>opencode/glm-5.3-flash-free</code></td>
+<td style="text-align: right;">4</td>
+<td>Withdrew the "GLM is best perf/$" conclusion: the guide's verdict was on <strong>hosted-API pricing</strong>, not local silicon. 440 lines.</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>2026-10-22</td>
+<td>A7 w2</td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">4</td>
+<td><strong>DeepSeek V4.1 cannot live on this box</strong>: 4.4–4.8× over VRAM, Engram alone 183.1 GiB of FP8. 1,550 lines, no pending sections.</td>
+</tr>
+<tr>
+<td style="text-align: right;">18</td>
+<td>2026-10-22</td>
+<td>A5 w2 retry</td>
+<td><code>opencode/flint-40b-free</code></td>
+<td style="text-align: right;">4</td>
+<td>Completed the Kimi delta after the first route stalled; the delta is in <code>research/05-arch-kimi-k3.md</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">19</td>
+<td>2026-10-23</td>
+<td>W3 A1</td>
+<td><code>opencode/glm-5.3-flash-free</code></td>
+<td style="text-align: right;">25</td>
+<td>Octo hardware: <strong>DO NOT BUILD IT</strong>. $3,147/GPU vs the quads' $2,683; no validated 8-card air path; 128-lane map is 7×x16+1×x8.</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>2026-10-23</td>
+<td>W3 A2</td>
+<td><code>opencode/beam-free</code></td>
+<td style="text-align: right;">2</td>
+<td><strong>Yes-if</strong> GLM-5.3-Flash is ≥30 % of tokens at ≤128 K and the platform lands ≤$5,000/GPU. Otherwise no.</td>
+</tr>
+<tr>
+<td style="text-align: right;">21</td>
+<td>2026-10-23</td>
+<td>W3 A4</td>
+<td><code>opencode/beam-free</code></td>
+<td style="text-align: right;">2</td>
+<td><strong>Yes-if</strong> Flash-Next is material. The 27B gains nothing: same 41.1 tok/s/GPU, and <strong>$22.1 vs $18.15/Mtok</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">22</td>
+<td>2026-10-23</td>
+<td>W3 A3</td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">4</td>
+<td><strong>No as TP=8</strong>; yes only as 4 × TP=2. An 8-rank one-shot all-reduce and a gfx1201 MLA kernel would both have to exist.</td>
+</tr>
+<tr>
+<td style="text-align: right;">23</td>
+<td>2026-10-23</td>
+<td><code>9cedd15c</code></td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">39</td>
+<td>The lane-math Q&amp;A that framed the octo: 128 Gen5 lanes, 20 lanes per GPU+SSD pair, <strong>6 pairs at x16</strong>, and what 8 cards must give up.</td>
+</tr>
+<tr>
+<td style="text-align: right;">24</td>
+<td>2026-10-24</td>
+<td>W3 A8</td>
+<td><code>opencode/glm-5.3-flash-free</code></td>
+<td style="text-align: right;">5</td>
+<td>Incomplete — died chasing ASRock spec URLs. The A8 slice was taken from the existing 1,441-line file.</td>
+</tr>
+<tr>
+<td style="text-align: right;">25</td>
+<td>2026-10-24</td>
+<td>A8 sizing</td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">3</td>
+<td>Incomplete follow-up on streaming sizing and the "Basalt" lead.</td>
+</tr>
+<tr>
+<td style="text-align: right;">26</td>
+<td>2026-10-24</td>
+<td>A1 8-card</td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">3</td>
+<td>Incomplete follow-up on the 8-card hardware BOM.</td>
+</tr>
+<tr>
+<td style="text-align: right;">27</td>
+<td>2026-10-24</td>
+<td>A2 8-card</td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">5</td>
+<td>Incomplete follow-up on engines at 8 cards.</td>
+</tr>
+<tr>
+<td style="text-align: right;">28</td>
+<td>2026-10-24</td>
+<td>W3 A8 retry</td>
+<td><code>opencode/glm-5.3-flash-free</code></td>
+<td style="text-align: right;">1</td>
+<td>Route died before the first token.</td>
+</tr>
+<tr>
+<td style="text-align: right;">29</td>
+<td>2026-10-24</td>
+<td>CMP 170HX</td>
+<td><code>freellmapi/auto-smart</code></td>
+<td style="text-align: right;">8</td>
+<td><code>research/11-cmp170hx-verdict.md</code>: GA100 harvest, 64 GB HBM2e, Linux-only unlock, FP32 ~1/8, FP64 disabled, no vLLM/SGLang.</td>
+</tr>
+<tr>
+<td style="text-align: right;">30</td>
+<td>2026-10-24</td>
+<td>R9700 octo plan</td>
+<td><code>freellmapi/auto-smart</code></td>
+<td style="text-align: right;">7</td>
+<td><code>research/12-r9700-octo-build-plan.md</code>: TURIND8X vs ESC8000A-E12 vs AS-4125GS vs G494, with the ASUS board selected.</td>
+</tr>
+<tr>
+<td style="text-align: right;">31</td>
+<td>2026-10-24</td>
+<td>Benchmark hunt</td>
+<td><code>opencode/beam-free</code></td>
+<td style="text-align: right;">2</td>
+<td>Exactly <strong>one</strong> production TP=8 measurement exists (GLM-5.3-Flash 166/426/506); DeepSeek V4 Flash ~3.9 tok/s; Qwen refused.</td>
+</tr>
+<tr>
+<td style="text-align: right;">32</td>
+<td>2026-10-24</td>
+<td>Feasibility</td>
+<td><code>opencode/beam-free</code></td>
+<td style="text-align: right;">2</td>
+<td>Quads win <strong>7 of 8</strong> dimensions; octo wins throughput only. <code>research/feasibility-quad-vs-octo.md</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">33</td>
+<td>2026-10-24</td>
+<td>Price sourcing</td>
+<td><code>opencode/glm-5.3-flash-free</code></td>
+<td style="text-align: right;">1</td>
+<td>Died before the first token.</td>
+</tr>
+<tr>
+<td style="text-align: right;">34</td>
+<td>2026-10-24</td>
+<td>Price sourcing</td>
+<td><code>opencode/beam-free</code></td>
+<td style="text-align: right;">2</td>
+<td><code>research/prices-quad-vs-octo.md</code>: quad ~$11.5–12.7 k, octo ~$26.2–28.6 k, MSRP $1,299, DDR5 32 GB ~$950.</td>
+</tr>
+<tr>
+<td style="text-align: right;">35</td>
+<td>2026-10-24</td>
+<td>Price sourcing</td>
+<td><code>freellmapi/qwen3.8-max</code></td>
+<td style="text-align: right;">1</td>
+<td>Died before the first token.</td>
+</tr>
+<tr>
+<td style="text-align: right;">36</td>
+<td>2026-10-24</td>
+<td>R1</td>
+<td><code>freellmapi/qwen3.8-max</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">37</td>
+<td>2026-10-24</td>
+<td>R3</td>
+<td><code>freellmapi/glm-5.3</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">38</td>
+<td>2026-10-24</td>
+<td>R2</td>
+<td><code>freellmapi/qwen3.7-max</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">39</td>
+<td>2026-10-24</td>
+<td>R4</td>
+<td><code>freellmapi/deepseek-v4-pro</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">40</td>
+<td>2026-10-24</td>
+<td>R5</td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">41</td>
+<td>2026-10-24</td>
+<td>R6</td>
+<td><code>opencode/glm-5.3-flash-free</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">42</td>
+<td>2026-10-24</td>
+<td>R5 retry</td>
+<td><code>freellmapi/qwen3.6-max-preview</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">43</td>
+<td>2026-10-24</td>
+<td>R6 retry</td>
+<td><code>freellmapi/minimax-m3</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">44</td>
+<td>2026-10-24</td>
+<td>R4 retry</td>
+<td><code>freellmapi/qwen3.8-27b</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">45</td>
+<td>2026-10-24</td>
+<td>R6 retry</td>
+<td><code>freellmapi/deepseek-v4-flash</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">46</td>
+<td>2026-10-24</td>
+<td>R6 draft</td>
+<td><code>freellmapi/glm-4.7-flash</code></td>
+<td style="text-align: right;">4</td>
+<td>Wrote a draft of <code>compare-kernels-verdict.md</code> that <strong>substituted AMD MI250 (gfx90a) for the R9700</strong> and understated V100 FP16. Rewritten.</td>
+</tr>
+<tr>
+<td style="text-align: right;">47</td>
+<td>2026-10-24</td>
+<td>R6 xkiro</td>
+<td><code>xkiro/qwen3.8-max:free</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">48</td>
+<td>2026-10-24</td>
+<td>R1 xkiro</td>
+<td><code>xkiro/qwen3.7-plus:free</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">49</td>
+<td>2026-10-24</td>
+<td>R1 xkiro</td>
+<td><code>xkiro/qwen3.8-max:free</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td>2026-10-24</td>
+<td>R1 logfare</td>
+<td><code>logfare/deepseek-v4.1-flash-1017</code></td>
+<td style="text-align: right;">10</td>
+<td>Incomplete; the supervisor wrote <code>platform-r9700.md</code> from the same brief.</td>
+</tr>
+<tr>
+<td style="text-align: right;">51</td>
+<td>2026-10-24</td>
+<td>R3 logfare</td>
+<td><code>logfare/deepseek-v4.1-flash-1017</code></td>
+<td style="text-align: right;">3</td>
+<td>Incomplete — no web tools in the session; tried to delegate the lookups.</td>
+</tr>
+<tr>
+<td style="text-align: right;">52</td>
+<td>2026-10-24</td>
+<td>R2 logfare</td>
+<td><code>logfare/deepseek-v4.1-flash-1017</code></td>
+<td style="text-align: right;">7</td>
+<td><strong>Completed the V100 deep dive</strong> (518 lines, 73 sources): $8,500–9,000 Supermicro 4029GP-TVRT, NVLink 2.0, no FP8/FP4, <strong>53.0 tok/s measured</strong> — the 18× correction.</td>
+</tr>
+<tr>
+<td style="text-align: right;">53</td>
+<td>2026-10-24</td>
+<td>R4 logfare</td>
+<td><code>logfare/deepseek-v4.1-flash-1017</code></td>
+<td style="text-align: right;">4</td>
+<td>Incomplete; the supervisor wrote <code>compare-price-tco.md</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">54</td>
+<td>2026-10-24</td>
+<td>R5 logfare</td>
+<td><code>logfare/deepseek-v4.1-flash-1017</code></td>
+<td style="text-align: right;">1</td>
+<td>Died.</td>
+</tr>
+<tr>
+<td style="text-align: right;">55</td>
+<td>2026-10-24</td>
+<td>R6 redo</td>
+<td><code>logfare/deepseek-v4.1-flash-1017</code></td>
+<td style="text-align: right;">4</td>
+<td>Incomplete; the supervisor rewrote <code>compare-kernels-verdict.md</code> with the correct gfx1201/V100/CMP figures.</td>
+</tr>
+<tr>
+<td style="text-align: right;">56</td>
+<td>2026-10-24</td>
+<td><code>mcp:1fde</code></td>
+<td><code>openrouter/free</code></td>
+<td style="text-align: right;">10</td>
+<td>Tool probe ("PONG") and CMP 170HX spec lookups. No artefact.</td>
+</tr>
+<tr>
+<td style="text-align: right;">57</td>
+<td>2026-10-30</td>
+<td><code>321464d6</code></td>
+<td><code>logfare/deepseek-v4.1-flash-1017</code></td>
+<td style="text-align: right;">14</td>
+<td><strong>Strata build review.</strong> The correction that changes two line items: <strong>256 GB RAM</strong>, <strong>2 × 2 TB or 1 × 4 TB Gen5</strong>, layer split not TP=4, and Flash-Next's 2 KV heads cap clean TP at 2.</td>
+</tr>
+<tr>
+<td style="text-align: right;">58</td>
+<td>2026-10-31</td>
+<td><code>03293844</code></td>
+<td><code>logfare/deepseek-v4.1-flash-1017</code></td>
+<td style="text-align: right;">1,781</td>
+<td><strong>The 8-hour sweep.</strong> 31 rounds across Reddit, Level1Techs, GitHub, HF, YouTube, X, Chinese/Korean/German forums and OEM SKUs. Produced the live registry <strong>B1–B52</strong>, <code>research/sweep-log.md</code>, and the per-entry evidence in <code>sources/</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">59</td>
+<td>2026-10-31</td>
+<td><code>e9560937</code></td>
+<td><code>openrouter/free</code></td>
+<td style="text-align: right;">18</td>
+<td><code>docs/REAL-4X-BUILDS.md</code> — the first 13-build registry with full specs, tags and cross-cutting tables.</td>
+</tr>
+<tr>
+<td style="text-align: right;">60</td>
+<td>2026-10-31</td>
+<td><code>99e49061</code></td>
+<td><code>openrouter/free</code></td>
+<td style="text-align: right;">54</td>
+<td><code>research/TP4-r9700-builds.md</code> — 27 verified TP4 sources, the headline table, and the engine/gotcha sections that seeded the registry.</td>
+</tr>
+<tr>
+<td style="text-align: right;">61</td>
+<td>2026-10-31</td>
+<td><code>2cd3feea</code></td>
+<td><code>logfare/auto</code></td>
+<td style="text-align: right;">73</td>
+<td><code>r9700-4x-builds.md</code> <strong>B1–B20</strong> plus the engine matrix, power/cooling reference and the first gotcha list.</td>
+</tr>
+<tr>
+<td style="text-align: right;">62</td>
+<td>2026-10-31</td>
+<td><code>ff0b649c</code></td>
+<td><code>logfare/deepseek-v4.1-flash-1017</code></td>
+<td style="text-align: right;">2</td>
+<td>Goal opened for the best-3 consolidation; <strong>0 assistant turns in this thread</strong>. The deliverable exists as <code>docs/BEST-3-4X-R9700-BUILDS.md</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">63</td>
+<td>2026-11-07</td>
+<td><code>92933159</code></td>
+<td><code>opencode/deepseek-v4.1-flash-free</code></td>
+<td style="text-align: right;">1</td>
+<td><strong>This consolidation session.</strong> Distilled the 62 prior threads into this handbook, archived every transcript, and retired the other sessions.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-threads-that-mattered-most">The threads that mattered most<a class="headerlink" href="#the-threads-that-mattered-most" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Thread</th>
+<th>Why it is load-bearing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>93b2a1e8</code></strong> (255 msgs)</td>
+<td>The only place where wave 1 and wave 2 were integrated into one design. <code>ARCHITECTURE.md</code>, <code>SPECS.md</code>, the animation, and both gates come from here.</td>
+</tr>
+<tr>
+<td><strong><code>03293844</code></strong> (1,781 msgs)</td>
+<td>88 % of all messages in the project. The registry is not a literature review; it is 31 rounds of primary-source sweeps with a rejection note for every candidate.</td>
+</tr>
+<tr>
+<td><strong><code>321464d6</code></strong> (14 msgs)</td>
+<td>Small thread, large consequence: it changed the RAM and SSD line items and killed "Strata = TP4".</td>
+</tr>
+<tr>
+<td><strong><code>R2 logfare</code></strong> (7 msgs)</td>
+<td>The late return that corrected the V100 estimate by 18× and changed the three-platform verdict.</td>
+</tr>
+<tr>
+<td><strong><code>9cedd15c</code></strong> (39 msgs)</td>
+<td>The lane arithmetic that made the octo decision legible instead of rhetorical.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-the-24-empty-threads-prove">What the 24 empty threads prove<a class="headerlink" href="#what-the-24-empty-threads-prove" title="Permanent link">&para;</a></h2>
+<p>They are the reproducibility record. The project's most expensive failure mode was not a
+wrong fact; it was <strong>a model route that reads "ready" and produces nothing</strong>. The rule
+that came out of it — probe every candidate with a one-word prompt before committing a
+brief — is in <code>research/AGENTS.md</code> and is the reason later waves used <code>opencode/*</code> zen
+routes.</p>
+<p><sub>Archive: <code>session-archive/index.json</code> (63 records) and <code>session-archive/threads/</code>
+(63 transcripts). Dates are the thread creation dates; some threads were updated days
+later.</sub></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "content.code.copy", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

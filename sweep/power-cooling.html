@@ -1,0 +1,1067 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Everything the 34 goal-seek sweeps found about real 4x AMD Radeon AI PRO R9700 inference builds.">
+      
+      
+      
+      
+        <link rel="prev" href="engines.html">
+      
+      
+        <link rel="next" href="corrections.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Power and cooling - R9700 Quad Registry — the /goal sweep corpus</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#power-and-cooling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="R9700 Quad Registry — the /goal sweep corpus" class="md-header__button md-logo" aria-label="R9700 Quad Registry — the /goal sweep corpus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            R9700 Quad Registry — the /goal sweep corpus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Power and cooling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="R9700 Quad Registry — the /goal sweep corpus" class="md-nav__button md-logo" aria-label="R9700 Quad Registry — the /goal sweep corpus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    R9700 Quad Registry — the /goal sweep corpus
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="method.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How the sweep worked
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="registry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The 52 builds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="platforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platforms and lanes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Measured performance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="engines.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engines and recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power and cooling
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="power-cooling.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power and cooling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-210-w-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 210 W rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supplies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supplies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whole-machine-draw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Whole-machine draw
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-chassis-are-power-limited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Server chassis are power-limited
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chassis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chassis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#water-cooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water cooling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thermal-datapoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thermal datapoints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-pre-flight-power-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A pre-flight power checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="corrections.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corrections and fakes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="open-leads.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open leads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="venues.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Venue coverage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sessions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The 34 sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sources.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence archive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-210-w-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 210 W rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supplies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supplies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whole-machine-draw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Whole-machine draw
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-chassis-are-power-limited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Server chassis are power-limited
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chassis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chassis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#water-cooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water cooling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thermal-datapoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thermal datapoints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-pre-flight-power-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A pre-flight power checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="power-and-cooling">Power and cooling<a class="headerlink" href="#power-and-cooling" title="Permanent link">&para;</a></h1>
+<p>The R9700 is a 300 W-class card that behaves like a 400 W card in transients and is happiest
+at <strong>210 W</strong>. Every production quad in the registry runs a cap, and the corpus treats that as
+the single highest-value free change.</p>
+<h2 id="the-210-w-rule">The 210 W rule<a class="headerlink" href="#the-210-w-rule" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Evidence</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B19 — 4× ASRock, gpt-oss-120b TP4</td>
+<td><strong>44.6 → 89.4 t/s</strong> decode after capping to 210 W</td>
+</tr>
+<tr>
+<td>Dual-card check, 210 W vs 300 W</td>
+<td><strong>151.5 vs 153.0 t/s</strong> — +50% card power buys ~1%</td>
+</tr>
+<tr>
+<td>B1, B3, B27, B45</td>
+<td>All run 210–225 W per card in production</td>
+</tr>
+<tr>
+<td>Uncapped</td>
+<td>Hard power-off ~7 minutes into warm-up in one report</td>
+</tr>
+<tr>
+<td>Minimum settable</td>
+<td><strong>210 W</strong>; 200 W is not offered</td>
+</tr>
+</tbody>
+</table>
+<p>The cap is not only thermal. It also keeps a four-card box inside a normal circuit: B27's
+owner capped at 210 W so total draw stayed ~1,400 W and "plugs into any normal 15 A outlet".</p>
+<p>Transients are the catch: the cards <strong>spike to ~400 W</strong> despite the cap, and a custom
+one-shot all-reduce creates multi-kHz in-phase load steps that trip some ATX 3.x supplies.</p>
+<h2 id="supplies">Supplies<a class="headerlink" href="#supplies" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Proven</th>
+<th>Fails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thermaltake GF3 1650 W</td>
+<td><strong>BeQuiet Dark Power 14 1200 W</strong> — TP load oscillation</td>
+</tr>
+<tr>
+<td>Lian Li 1000 / 1200 SFX</td>
+<td><strong>Hydro PTM PRO ATX3.1 1650 W</strong> — not enough 8-pin connectors</td>
+</tr>
+<tr>
+<td>Corsair HX1200i</td>
+<td>850 W — insufficient for even 2 cards in one report</td>
+</tr>
+<tr>
+<td>Seasonic 2200 W / Prime PX-2200</td>
+<td></td>
+</tr>
+<tr>
+<td>ASUS PRO WS 2200 W</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Connector arithmetic depends on the card vendor.</strong> PowerColor ships a <strong>2× 6-pin →
+12VHPWR</strong> adapter, while "all others I've seen will consume 3×" — so four PowerColor cards
+need <strong>8</strong> PCIe feeds versus <strong>12</strong> for other vendors. That is the difference between a
+1600 W unit with four 12VHPWR leads and a unit that cannot be cabled at all.</p>
+<p><strong>Two supplies are normal at this size.</strong> B46 runs 2× 1600 W Great Wall on <strong>two separate
+circuits</strong>; B37's server chassis is limited by its per-card 300 W rating; B41 runs a full
+300 W per card on <strong>DC server supplies and a breakout board</strong> in an open frame and reports it
+"very stable so far".</p>
+<h2 id="whole-machine-draw">Whole-machine draw<a class="headerlink" href="#whole-machine-draw" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Figure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B39 (media quad)</td>
+<td><strong>~123 W idle</strong> with all four cards installed; <strong>500–900 W</strong> under AI load</td>
+</tr>
+<tr>
+<td>B27</td>
+<td>~1,400 W total at 210 W/card, on a 15 A outlet</td>
+</tr>
+<tr>
+<td>B46</td>
+<td>"about 300 W at peak" per card, ~1.2 kW class, two circuits</td>
+</tr>
+<tr>
+<td>B1</td>
+<td>~1,600 W total, 230 V, cards undervolted below 210 W</td>
+</tr>
+<tr>
+<td>B3</td>
+<td><strong>837 W</strong> while serving 623 tok/s @16</td>
+</tr>
+</tbody>
+</table>
+<p>At 120 V, ~1,200 W of GPU power already sits near a branch limit, which is why the corpus
+calls four R9700 "the practical maximum per box". On 230 V / 16 A (3.7 kW) a 2200 W supply
+is comfortable.</p>
+<h2 id="server-chassis-are-power-limited">Server chassis are power-limited<a class="headerlink" href="#server-chassis-are-power-limited" title="Permanent link">&para;</a></h2>
+<p>The Gigabyte G291-Z20 (B37) is rated <strong>300 W per card</strong>, and four R9700s <strong>crashed
+individual cards</strong> with spikes above that. The <strong>210 W cap did not fix it</strong>; the only fix was
+<strong>one card per dual-card bay</strong>. Treat an OEM 8-GPU server as a <strong>4-card</strong> box unless you add
+an external supply. This is the reason B37 stopped at four and why the 8-card question remains
+a power problem, not a software one.</p>
+<p>B46 is the counter-example that keeps the rule honest: four ASRock cards in an EPYC 7742
+server at ~300 W each, <strong>69–70 °C at 100% load on air</strong>, on two supplies and two circuits.
+"One card per dual bay" is a chassis rule, not a universal thermal one.</p>
+<h2 id="chassis">Chassis<a class="headerlink" href="#chassis" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Eight expansion slots</strong> are required for four dual-slot cards; many Threadripper boards
+  have seven. The frame must carry the eighth past the board edge.</li>
+<li>B39 uses a <strong>SilverStone SEDA H2</strong> for exactly this reason.</li>
+<li>Wendell on the SilverStone <strong>RM44</strong>: "<strong>5/6U — you CAN do it with the 4U but you'd need the
+  thicc 15k arctic fans</strong>."</li>
+<li>B28's <strong>Phanteks Enthoo Pro 2 Server V2</strong> holds the quad with 264 GB DDR4 and a 1600 W
+  supply.</li>
+<li>B46's <strong>Gigabyte MZ01-CE1</strong> server chassis fits four ASRock cards "cramped" and still
+  cools them.</li>
+</ul>
+<h2 id="water-cooling">Water cooling<a class="headerlink" href="#water-cooling" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A <strong>1-slot R9700 waterblock</strong> exists: <strong>Alphacool, ~€320–325 per block</strong>.</li>
+<li>Compatibility: <strong>ASRock Creator, ASUS TURBO, PowerColor, Sapphire</strong> — <strong>not Gigabyte</strong>
+  (and Alphacool reportedly has no plan for one).</li>
+<li>The community verdict is that blocks are for <strong>&gt;4 cards</strong>, not for a quad that fits with
+  airflow. Dense air-cooled quads stay under throttle if exhausts are clear and cold air
+  reaches top and bottom.</li>
+<li>The risk argument is worth repeating: pumps/fans have a 3.5–6 year 24/7 service life, every
+  fitting is a failure point, and a failed loop is far likelier to kill €5,000 of cards than
+  a failed heatsink. For a 4-card box that fits, air is the lower-risk choice.</li>
+<li>A German thread confirms multi-card water plans are dying on <strong>price</strong>, not hardware: one
+  owner bought Gigabyte cards, found the blocks incompatible, and abandoned a 4–7 card plan.</li>
+</ul>
+<h2 id="thermal-datapoints">Thermal datapoints<a class="headerlink" href="#thermal-datapoints" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Condition</th>
+<th>Temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B46</td>
+<td>4× ASRock, cramped, ~300 W/card, Radiance</td>
+<td><strong>69–70 °C</strong> at 100% load</td>
+</tr>
+<tr>
+<td>One report</td>
+<td>250 W cap</td>
+<td><strong>~100 °C hotspot</strong> (the outlier that makes B46 notable)</td>
+</tr>
+<tr>
+<td>Dual-card check</td>
+<td>300 W</td>
+<td>82 °C max, vs 210 W's lower draw for ~1% less decode</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-pre-flight-power-checklist">A pre-flight power checklist<a class="headerlink" href="#a-pre-flight-power-checklist" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Cap every card at <strong>210 W</strong> and verify with <code>rocm-smi</code>/<code>amdgpu</code> — not just the driver
+   setting.</li>
+<li>Count <strong>PCIe feeds per card for your vendor</strong> (PowerColor 2, others 3) before choosing a
+   supply.</li>
+<li>Budget <strong>1,400–1,600 W</strong> for a quad plus host; two supplies or one 2200 W unit.</li>
+<li>Prefer <strong>two circuits</strong> if the box will run 24/7.</li>
+<li>Confirm <strong>8 slots</strong> and airflow to top and bottom cards.</li>
+<li>If it is an OEM server chassis, assume <strong>one card per dual bay</strong> until proven otherwise.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.highlight"], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

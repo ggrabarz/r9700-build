@@ -1,0 +1,1755 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="State-of-the-art findings from the R9700 build research program">
+      
+      
+        <meta name="author" content="R9700 build program">
+      
+      
+      
+        <link rel="prev" href="../gotchas/">
+      
+      
+        <link rel="next" href="../sessions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Evidence & corrections - R9700 SOTA Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#evidence-corrections" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="R9700 SOTA Handbook" class="md-header__button md-logo" aria-label="R9700 SOTA Handbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            R9700 SOTA Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Evidence & corrections
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="R9700 SOTA Handbook" class="md-nav__button md-logo" aria-label="R9700 SOTA Handbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    R9700 SOTA Handbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verdict/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verdict
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quantisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage & streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build registry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost & TCO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gotchas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gotchas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence & corrections
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence & corrections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-how-a-claim-earns-a-place-in-this-handbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. How a claim earns a place in this handbook
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-corrections-that-changed-the-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The corrections that changed the design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The corrections that changed the design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-briefs-memory-bandwidth-was-wrong-by-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The brief's memory bandwidth was wrong by 2.8×
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-deepseek-v41-flashs-kv-cache-46120-kbtoken-890-bytestoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 DeepSeek V4.1 Flash's KV cache: 46–120 KB/token → 890 bytes/token
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-the-v100-estimate-was-wrong-by-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 The V100 estimate was wrong by 18×
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-iommupt-the-vendor-doc-loses-to-the-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 iommu=pt: the vendor doc loses to the measurement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-kimi-k3s-expert-shape-3-7168-3072-3-3584-3072" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Kimi K3's expert shape: 3 × 7168 × 3072 → 3 × 3584 × 3072
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-glm-53-flash-and-glm-53-are-different-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 GLM-5.3-Flash and GLM-5.3 are different models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-deepseek-v41-flashs-layer-pattern-16-full-attn-of-40-36-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 DeepSeek V4.1 Flash's layer pattern: "16 full-attn of 40" → 36 global
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-wrx90e-sage-se-ruled-out-7-x16-plus-one-bifurcated-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 WRX90E-SAGE SE: "ruled out" → "7 × x16 plus one bifurcated slot"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-the-memory-price-range-itemised-october-2026-street-price" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 The memory price range → itemised October 2026 street price
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-int4-the-instruction-exists-the-kernel-does-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 INT4: the instruction exists, the kernel does not
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-the-all-reduce-tax-is-latency-not-bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 The all-reduce tax is latency, not bytes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212-a8s-final-revision-changed-three-more-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.12 A8's final revision changed three more conclusions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-conclusions-that-were-withdrawn-or-superseded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Conclusions that were withdrawn or superseded
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-smaller-corrections-worth-remembering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Smaller corrections worth remembering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-claims-deliberately-left-unknown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Claims deliberately left UNKNOWN
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-would-change-the-verdict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. What would change the verdict
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-the-agent-route-problem-reproducibility-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. The agent-route problem (reproducibility note)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-audit-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Audit trail
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session ledger
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-how-a-claim-earns-a-place-in-this-handbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. How a claim earns a place in this handbook
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-corrections-that-changed-the-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The corrections that changed the design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The corrections that changed the design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-briefs-memory-bandwidth-was-wrong-by-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The brief's memory bandwidth was wrong by 2.8×
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-deepseek-v41-flashs-kv-cache-46120-kbtoken-890-bytestoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 DeepSeek V4.1 Flash's KV cache: 46–120 KB/token → 890 bytes/token
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-the-v100-estimate-was-wrong-by-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 The V100 estimate was wrong by 18×
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-iommupt-the-vendor-doc-loses-to-the-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 iommu=pt: the vendor doc loses to the measurement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-kimi-k3s-expert-shape-3-7168-3072-3-3584-3072" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Kimi K3's expert shape: 3 × 7168 × 3072 → 3 × 3584 × 3072
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-glm-53-flash-and-glm-53-are-different-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 GLM-5.3-Flash and GLM-5.3 are different models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-deepseek-v41-flashs-layer-pattern-16-full-attn-of-40-36-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 DeepSeek V4.1 Flash's layer pattern: "16 full-attn of 40" → 36 global
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-wrx90e-sage-se-ruled-out-7-x16-plus-one-bifurcated-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 WRX90E-SAGE SE: "ruled out" → "7 × x16 plus one bifurcated slot"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-the-memory-price-range-itemised-october-2026-street-price" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 The memory price range → itemised October 2026 street price
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-int4-the-instruction-exists-the-kernel-does-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 INT4: the instruction exists, the kernel does not
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-the-all-reduce-tax-is-latency-not-bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 The all-reduce tax is latency, not bytes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212-a8s-final-revision-changed-three-more-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.12 A8's final revision changed three more conclusions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-conclusions-that-were-withdrawn-or-superseded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Conclusions that were withdrawn or superseded
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-smaller-corrections-worth-remembering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Smaller corrections worth remembering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-claims-deliberately-left-unknown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Claims deliberately left UNKNOWN
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-would-change-the-verdict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. What would change the verdict
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-the-agent-route-problem-reproducibility-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. The agent-route problem (reproducibility note)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-audit-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Audit trail
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="evidence-corrections">Evidence &amp; corrections<a class="headerlink" href="#evidence-corrections" title="Permanent link">&para;</a></h1>
+<p>This page is the audit trail. It records what was believed, what replaced it, and why —
+so a later session does not re-make the same mistake. Nothing here is deleted from the
+project; superseded claims are marked, not hidden.</p>
+<hr />
+<h2 id="1-how-a-claim-earns-a-place-in-this-handbook">1. How a claim earns a place in this handbook<a class="headerlink" href="#1-how-a-claim-earns-a-place-in-this-handbook" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Test it passed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MEASURED</strong></td>
+<td>A published run on R9700 hardware, with the model, quant and context named.</td>
+</tr>
+<tr>
+<td><strong>REPORTED</strong></td>
+<td>The builder's own claim without an independent run. Usable, labelled.</td>
+</tr>
+<tr>
+<td><strong>DERIVED</strong></td>
+<td>Arithmetic on measured inputs (cost per token, residency, lane counts).</td>
+</tr>
+<tr>
+<td><strong>VERIFIED</strong></td>
+<td>Checked against a primary artefact: vendor manual, spec sheet, config file, source code.</td>
+</tr>
+<tr>
+<td><strong>UNKNOWN</strong></td>
+<td>No source found. It stays UNKNOWN; it is never silently upgraded.</td>
+</tr>
+</tbody>
+</table>
+<p>The rule that decides disputes: <strong>the primary source wins over an agent, and a
+measurement wins over vendor documentation.</strong> That rule is not theoretical — it is how
+<code>iommu=pt</code> was caught, and how the brief's own bandwidth figure was corrected before any
+downstream number used it.</p>
+<p>Every load-bearing fact was read at least twice: once by the supervisor from the primary
+source, once by an agent from its own source. <code>research/09-verification-matrix.md</code> records
+the 14 contradictions that survived that process.</p>
+<hr />
+<h2 id="2-the-corrections-that-changed-the-design">2. The corrections that changed the design<a class="headerlink" href="#2-the-corrections-that-changed-the-design" title="Permanent link">&para;</a></h2>
+<h3 id="21-the-briefs-memory-bandwidth-was-wrong-by-28">2.1 The brief's memory bandwidth was wrong by 2.8×<a class="headerlink" href="#21-the-briefs-memory-bandwidth-was-wrong-by-28" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Value</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shared brief (illustrative)</td>
+<td>32 GB GDDR6, <strong>512-bit, 1.792 TB/s</strong></td>
+<td>Would make the PCIe fabric, not DRAM, the decode bottleneck</td>
+</tr>
+<tr>
+<td>AMD product page (all eight agents + supervisor)</td>
+<td><strong>256-bit, 640 GB/s</strong></td>
+<td>Decode is DRAM-bound at every realistic batch size</td>
+</tr>
+</tbody>
+</table>
+<p>This is the single most important correction in the project. At 1.792 TB/s the whole
+PCIe-vs-DRAM argument inverts. The corrected figure is at the top of
+<code>research/00-supervisor-verification.md</code> and <code>research/08</code> §0, and no downstream number
+uses the wrong one. <strong>VERIFIED.</strong></p>
+<h3 id="22-deepseek-v41-flashs-kv-cache-46120-kbtoken-890-bytestoken">2.2 DeepSeek V4.1 Flash's KV cache: 46–120 KB/token → 890 bytes/token<a class="headerlink" href="#22-deepseek-v41-flashs-kv-cache-46120-kbtoken-890-bytestoken" title="Permanent link">&para;</a></h3>
+<p>A8 derived 46–120 KB/token from the raw MLA dimensions. A7 read the model card and
+DeepSeek's technical report (arXiv 2609.19969) and got <strong>890 bytes/token of global KV</strong>.</p>
+<p>A7 is right. The raw-dimension derivation ignores three mechanisms:</p>
+<ol>
+<li><strong>CSA2 cross-layer KV reuse</strong> — <code>compress_ratios</code> <code>[0,0, 2×18, 1×18, 0,0]</code>,
+   <code>kv_source_layer_ids</code> <code>[2,8,14,20]</code>.</li>
+<li><strong>FP4 KV caching</strong> — E2M1 main KV + indexer K, one E4M3 scale per 16 channels.</li>
+<li><strong>SWA in every layer</strong> — only the first two encoder layers are pure SWA.</li>
+</ol>
+<p>At 1 M tokens the global KV is <strong>890 MB</strong>, not tens of gigabytes. The <em>persistent SWA KV</em>,
+not the global KV, is the scaling term. Corrected in <code>docs/SPECS.md</code> §5/§7.1 and the
+animation. <strong>VERIFIED.</strong></p>
+<h3 id="23-the-v100-estimate-was-wrong-by-18">2.3 The V100 estimate was wrong by 18×<a class="headerlink" href="#23-the-v100-estimate-was-wrong-by-18" title="Permanent link">&para;</a></h3>
+<p>The three-platform comparison initially modelled V100 throughput from bandwidth and got
+<strong>~950–1,500 tok/s</strong> on GLM-5.3-Flash. A late-returning subagent found two independent
+2026 8-card V100 corpora; the measured figure is <strong>53.0 tok/s aggregate</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Estimate</th>
+<th>Measured</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V100 GLM-5.3-Flash</td>
+<td>~950–1,500 tok/s</td>
+<td><strong>53.0 tok/s</strong></td>
+</tr>
+<tr>
+<td>V100 complete machine</td>
+<td>$13,988 DIY</td>
+<td><strong>$8,500–$9,000</strong> (warrantied Supermicro 4029GP-TVRT)</td>
+</tr>
+<tr>
+<td>V100 3-year TCO</td>
+<td>$24,059</td>
+<td><strong>$19,045</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why the estimate failed:</strong> V100 has no native FP8 or FP4. It must dequantise NVFP4 into
+FP16 on 2017 tensor cores, so it spends its time converting rather than multiplying. The
+NVLink fabric was never the bottleneck; <strong>precision support</strong> was. The project had guessed
+the opposite. All three comparison files were corrected. <strong>MEASURED.</strong></p>
+<h3 id="24-iommupt-the-vendor-doc-loses-to-the-measurement">2.4 <code>iommu=pt</code>: the vendor doc loses to the measurement<a class="headerlink" href="#24-iommupt-the-vendor-doc-loses-to-the-measurement" title="Permanent link">&para;</a></h3>
+<p>AMD's ROCm system requirements say multi-GPU systems <em>"may require <code>iommu=pt</code> … to prevent
+application hangs."</em> On a real 2× R9700 box, with <code>iommu=pt</code> on, peer READ returns
+<strong>0xFF garbage</strong> and peer WRITE is <strong>silently dropped</strong>.</p>
+<p>The measured fix is to <strong>remove <code>iommu=pt</code></strong> and leave the IOMMU translated. The brief's
+runbook, the architecture doc and the animation all carried the vendor advice and were
+corrected. This is the highest-consequence item in the runbook: the failure mode moves
+from a loud hang to silent data corruption. <strong>MEASURED.</strong></p>
+<h3 id="25-kimi-k3s-expert-shape-3-7168-3072-3-3584-3072">2.5 Kimi K3's expert shape: 3 × 7168 × 3072 → 3 × 3584 × 3072<a class="headerlink" href="#25-kimi-k3s-expert-shape-3-7168-3072-3-3584-3072" title="Permanent link">&para;</a></h3>
+<p>A8 assumed experts run at the full hidden width. A5 read <code>config.json</code> and
+<code>modeling_kimi_linear.py</code> and found <code>routed_expert_hidden_size</code> = <strong>3584</strong> — a LatentMoE
+latent. Each expert is <code>3 × 3584 × 3072 = 33,030,144</code> params; 92 MoE layers × 896 experts
+= <strong>2.7227 T</strong> routed-expert parameters. Verified against shard-header tensor shapes, not
+just the config. A8's conclusion (≈6× the box's VRAM) is unaffected; the arithmetic is
+now A5's. <strong>VERIFIED.</strong></p>
+<h3 id="26-glm-53-flash-and-glm-53-are-different-models">2.6 GLM-5.3-Flash and GLM-5.3 are different models<a class="headerlink" href="#26-glm-53-flash-and-glm-53-are-different-models" title="Permanent link">&para;</a></h3>
+<p>A sibling's single "GLM 5.3 = 45 layers, 288 experts" conflated two architectures:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Class</th>
+<th>Shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GLM-5.3-Flash</strong></td>
+<td><code>Glm5NextForConditionalGeneration</code> (<code>glm5_next</code>)</td>
+<td>45 layers, 288 routed + 1 shared, 3 dense-MLP lead + 34 KDA linear + 11 MLA+DSA</td>
+</tr>
+<tr>
+<td><strong>GLM-5.3 (full)</strong></td>
+<td><code>GlmMoeDsaForCausalLM</code> (<code>glm_moe_dsa</code>)</td>
+<td>78 layers, H 6144, 256 routed experts, all full-attention DSA, no linear layers</td>
+</tr>
+</tbody>
+</table>
+<p>Treating them as one model produces a wrong layer split. They are separate rows in
+<code>docs/SPECS.md</code> §7 and separate entries in the animation. <strong>VERIFIED.</strong></p>
+<h3 id="27-deepseek-v41-flashs-layer-pattern-16-full-attn-of-40-36-global">2.7 DeepSeek V4.1 Flash's layer pattern: "16 full-attn of 40" → 36 global<a class="headerlink" href="#27-deepseek-v41-flashs-layer-pattern-16-full-attn-of-40-36-global" title="Permanent link">&para;</a></h3>
+<p>A8 read <code>compress_ratios</code> and concluded 16 full-attention layers. A7 quoted the same
+array — <code>[0, 0, 2×18, 1×18, 0, 0]</code> — meaning layers 0–1 SWA, 2–19 ratio 2 (Full), 20–37
+ratio 1 (Reuse/Reindex), 38–39 ratio 0. <strong>36 layers carry a global branch</strong>; only the
+first two encoder layers are pure SWA. The animation now uses the exact index range 2–37.
+<strong>VERIFIED.</strong></p>
+<h3 id="28-wrx90e-sage-se-ruled-out-7-x16-plus-one-bifurcated-slot">2.8 WRX90E-SAGE SE: "ruled out" → "7 × x16 plus one bifurcated slot"<a class="headerlink" href="#28-wrx90e-sage-se-ruled-out-7-x16-plus-one-bifurcated-slot" title="Permanent link">&para;</a></h3>
+<p>A1's TL;DR said the board <em>"can NOT host 8 × x16: 6 × x16 + 1 × x16@x8 — option ruled
+out."</em> Its own cost table described a bifurcated x8/x8 build with 7 × x16 slots. The
+accurate statement: <strong>7 × x16, and the eighth GPU occupies one slot split into 2 × x8</strong> —
+viable, with one GPU at half width. Corrected in <code>docs/ARCHITECTURE.md</code> §2.1.
+<strong>VERIFIED.</strong></p>
+<h3 id="29-the-memory-price-range-itemised-october-2026-street-price">2.9 The memory price range → itemised October 2026 street price<a class="headerlink" href="#29-the-memory-price-range-itemised-october-2026-street-price" title="Permanent link">&para;</a></h3>
+<p>A1's TL;DR gave <em>"8 × 64 GB at $3.6k–7.2k+"</em> (a trend range). Its final cost table gives
+the dated, itemised price: <strong>8 × 64 GB DDR5-6400 at $2,799.99 each = $22,400</strong>, and
+<strong>8 × 32 GB DDR5-5600 at ~$950 each = $7,600</strong>. The itemised table wins. The <strong>$14,800
+delta between 256 GB and 512 GB</strong> is now called out as the largest controllable cost in
+the build. <strong>VERIFIED.</strong></p>
+<h3 id="210-int4-the-instruction-exists-the-kernel-does-not">2.10 INT4: the instruction exists, the kernel does not<a class="headerlink" href="#210-int4-the-instruction-exists-the-kernel-does-not" title="Permanent link">&para;</a></h3>
+<p>A1 verified in the LLVM ROCDL definitions that gfx1201's WMMA stack includes
+<strong><code>v_wmma_i32_16x16x32_iu4</code></strong> (K = 32) — the instruction behind the card's 766 TOPS INT4
+dense peak. A3 found that <strong>no shipping kernel emits it</strong> on gfx1201; every 4-bit path
+(AWQ, GPTQ, GGML <code>Q4_K</code>) dequantises to FP16/int8 first. A3's mnemonic guess
+(<code>16x16x16_iu4</code>) was flagged unverified; A1's <code>16x16x32_iu4</code> is the verified one.</p>
+<p>Both are right and complementary. It does not change the 4-bit conclusion (bandwidth-bound
+either way), but it identifies the highest-leverage <strong>unclaimed</strong> optimisation on this
+part. <strong>VERIFIED.</strong></p>
+<h3 id="211-the-all-reduce-tax-is-latency-not-bytes">2.11 The all-reduce tax is latency, not bytes<a class="headerlink" href="#211-the-all-reduce-tax-is-latency-not-bytes" title="Permanent link">&para;</a></h3>
+<p>The early framing emphasised bytes. The final measurement: at TP=8 the all-reduce moves
+only <strong>10,240–14,336 B per layer</strong>, so 80–186 collectives per token is 0.49–2.67 MB/token
+— 81–164 µs of link time, ~0.4 % of a 20 ms token. The real cost is <strong>2.6–6.1 ms of
+synchronisation</strong>: <strong>5–31 % of a token</strong>, and <strong>20.9 %</strong> in the measured GLM TP=8 profile
+(46 collectives × 27.3 µs = 1.26 ms).</p>
+<p>The latency framing is the stronger one because it survives the objection that the byte
+count is small. The architecture doc now leads with it; the animation has a
+<strong>SYNC POINTS / TOKEN</strong> panel. <strong>MEASURED + DERIVED.</strong></p>
+<h3 id="212-a8s-final-revision-changed-three-more-conclusions">2.12 A8's final revision changed three more conclusions<a class="headerlink" href="#212-a8s-final-revision-changed-three-more-conclusions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Qwen3.8-27B at FP8 is 27.78 GB and fits on ONE 32 GB card</strong> (13.89 GB at INT4). The
+  dense model wants one GPU per replica, not eight-way sharding.</li>
+<li><strong>The VRAM-residency break-even:</strong> ≥ <strong>43.5 %</strong> of the active <em>routed</em>-expert bytes must
+  be resident for 20 tok/s (≥ <strong>73.7 %</strong> for 50 tok/s), because dense weights and the
+  shared expert are always resident and cannot be streamed. This sizes the expert cache,
+  not the model size.</li>
+<li><strong>Flash economics changed:</strong> at 15.36 TB per drive, enterprise Gen5 (PM1743) is
+  <strong>$287/TB</strong> at its best channel, cheaper than a consumer 4 TB SN8100 at $300/TB, and
+  adds 1 DWPD + PLP + hot-swap. But the datasheet 14.0 GB/s falls to <strong>~7.0 GB/s</strong> at the
+  0.5× sustained derate, and DDR5 memcpy costs <strong>4× an SSD read</strong> — so eight Gen5 drives
+  need <strong>384 GB/s of DRAM traffic</strong>, over an 8-channel DDR5-4800 budget. The
+  recommendation became capacity-driven.</li>
+</ul>
+<hr />
+<h2 id="3-conclusions-that-were-withdrawn-or-superseded">3. Conclusions that were withdrawn or superseded<a class="headerlink" href="#3-conclusions-that-were-withdrawn-or-superseded" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Wave-1 / early claim</th>
+<th>What replaced it</th>
+<th>Why it changed</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Build the octo (8 cards in one chassis)</strong></td>
+<td><strong>Build two proven quads</strong></td>
+<td>The octo is <strong>+17 % $/GPU</strong> before chassis/UPS, wins only on GLM-5.3-Flash TP=8 (<strong>+29.6 %/GPU</strong>), cannot serve Qwen3.8-27B at TP=8 (refused by name), and has <strong>no validated 8-card air build</strong></td>
+<td><code>docs/OCTO-VERDICT.md</code></td>
+</tr>
+<tr>
+<td><strong><code>iommu=pt</code> is mandatory</strong></td>
+<td><strong>Remove it; leave the IOMMU translated</strong></td>
+<td>Measured silent P2P corruption</td>
+<td>§2.4</td>
+</tr>
+<tr>
+<td><strong>Strata is the only HIP engine validated on R9700</strong></td>
+<td><strong>vLLM-Radiance / standalone Radiance is the production engine</strong></td>
+<td>The build guide runs vLLM + Radiance patches; <code>libr4d</code> has 25 hand-written RDNA4 kernels</td>
+<td>A2 delta; build guide</td>
+</tr>
+<tr>
+<td><strong>Use one GPU per replica for a dense model</strong></td>
+<td><strong>TP=2 per engine, two engines per box</strong></td>
+<td>TP=2 is <strong>forced by memory</strong> at 262 K context, not preferred</td>
+<td>A4 delta</td>
+</tr>
+<tr>
+<td><strong>Layer split, not TP=8</strong></td>
+<td><strong>DP × TP=2 for serving</strong>; layer split only for capacity</td>
+<td>Layer split has less traffic and fewer syncs and <strong>still loses on throughput</strong>: llama.cpp plateaus at <strong>56 tok/s</strong> where vLLM reaches 156–320</td>
+<td>Puget</td>
+</tr>
+<tr>
+<td><strong>300 W per card</strong></td>
+<td><strong>210 W cap, re-set every boot</strong></td>
+<td>It reverts after a cold power-off; capping can <em>double</em> throughput</td>
+<td>Build guide; B19</td>
+</tr>
+<tr>
+<td><strong>8-channel DDR5 = 307–410 GB/s</strong></td>
+<td><strong>The proven box is DDR4-2666 = 170.6 GB/s</strong></td>
+<td>The guide's platform is Rome, not Genoa</td>
+<td>Build guide</td>
+</tr>
+<tr>
+<td><strong>Multi-SSD array with layer-split weight streaming</strong></td>
+<td><strong>One 1 TB NVMe</strong> for the proven build</td>
+<td>The 8-drive array costs 3.29× the whole machine and needs 224 GB/s of DRAM traffic</td>
+<td>Build guide; A8</td>
+</tr>
+<tr>
+<td><strong>FP4/FP6 do not exist, so MXFP4 is impossible</strong></td>
+<td><strong>The silicon has no FP4 WMMA, but MXFP4 is reachable</strong> as a Quark container and a W4A8 fp8-WMMA path</td>
+<td>Radiance's <code>RADIANCE_MXFP4</code>; Quark</td>
+<td>A2</td>
+</tr>
+<tr>
+<td><strong>Prefix caching is broken on hybrid models</strong></td>
+<td><strong>Radiance's Mamba-align prefix cache gives ~3.6× TTFT drop</strong> on GDN hybrids</td>
+<td>Engine feature the wave-1 survey missed</td>
+<td>A2</td>
+</tr>
+<tr>
+<td><strong>8 × x16 Gen5 = 128 lanes = a hard wall</strong></td>
+<td><strong>The proven unit is a quad on Rome's 64 lanes</strong> — the wall is avoided, not solved</td>
+<td>The octo was a choice, not a requirement</td>
+<td>A1 delta</td>
+</tr>
+<tr>
+<td><strong>"RCCL fails on R9700"</strong></td>
+<td><strong>A chipset x16 slot with no PCIe atomics</strong>; stock vLLM TP=2 initialises RCCL in 0.12 s on a proper slot</td>
+<td>Puget retracted its own KVM/VFIO claim</td>
+<td>Puget</td>
+</tr>
+<tr>
+<td><strong>H-prefix is a cache</strong></td>
+<td><strong>mHC / Hyper-Connections</strong> (<code>hc_mult</code> = 4 residual streams)</td>
+<td>Three independent reads of the vendor tech report</td>
+<td>A4, A7, supervisor</td>
+</tr>
+<tr>
+<td><strong>Kimi K3 = 512 experts / top-16</strong></td>
+<td><strong>896 routed + 2 shared, top-16</strong>, ~2.78 T total / ~104 B activated</td>
+<td><code>config.json</code> + shard headers</td>
+<td>A5</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">The stale file</p>
+<p><code>docs/ARCHITECTURE.md</code> still contains wave-1 sections that conflict with the pages
+here — the octo recommendation, <code>iommu=pt</code>, and "Strata only". They are preserved
+because the file is also the design history. <strong>The handbook, <code>docs/OCTO-VERDICT.md</code>
+and <code>docs/BEST-3-4X-R9700-BUILDS.md</code> are the current word.</strong></p>
+</div>
+<hr />
+<h2 id="4-smaller-corrections-worth-remembering">4. Smaller corrections worth remembering<a class="headerlink" href="#4-smaller-corrections-worth-remembering" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Was</th>
+<th>Is</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B3 recorded as "gallery, no body"</td>
+<td>Full <strong>5,036-character body</strong> recovered: 53.1 / 484 / 623 / 603 tok/s, 837 W, 4K–64K prefill 7,044→5,961, decode 271→171 at 8 streams, TP=4 128K/256K rows, MTP 83 % vs 39 %, FP8 vs MXFP4 98.0/4,477 vs 95.3/4,819, holdout 94.0/90.0, exact BOM</td>
+<td><code>sources/reddit-1x67qeu.txt</code></td>
+</tr>
+<tr>
+<td>B49 rejected as "single card" in round 15</td>
+<td><strong>TP4 39.8 tok/s</strong> on Gemma4-31B MXFP4; the earlier read stopped at the first model block</td>
+<td>arca.live 183781194</td>
+</tr>
+<tr>
+<td><code>brane.tech</code> "unreachable, maybe empty"</td>
+<td>Wrong domain. The real site is <strong>branetechnologies.com</strong>, a <strong>two</strong>-card vendor whose R9700 numbers are single-card</td>
+<td><code>sources/brane-technologies-r9700.md</code></td>
+</tr>
+<tr>
+<td><code>amdai.net</code> as a possible quad source</td>
+<td><strong>Two</strong> cards, Cursor-agent-written, affiliate-monetised</td>
+<td><code>sources/brane-technologies-r9700.md</code>; amdai repo</td>
+</tr>
+<tr>
+<td>A djdeniro 4-card figure</td>
+<td><strong>Retracted in place</strong>: the June revision said "4× RX 9700, 210 W: 50–80 tokens/s"; the current revision says <strong>8×, 30–35 tokens/s</strong>. No host or prompt set either way</td>
+<td>commit 4f82b05</td>
+</tr>
+<tr>
+<td>Saber "TP 1, 2 or 4"</td>
+<td>Its own README: <em>"refuses any other TP (3, 4, …) by name: it is built for TP=1 and TP=2"</em></td>
+<td><code>sources/saber-engine-readme.md</code></td>
+</tr>
+<tr>
+<td>A8 attributed TP=4 figures to the build guide</td>
+<td><strong>"parallel" occurs once in 93 pages and says TP=2 only.</strong> The TP=4 numbers come from the companion Reddit thread — secondary, not the PDF</td>
+<td><code>docs/ARCHITECTURE.md</code> §14.1</td>
+</tr>
+<tr>
+<td>A6 "pending" in the verification matrix</td>
+<td>A6 completed in wave 2 and independently confirms GLM-5.3-Flash (45 L, 288+1 experts, top-8, <code>noaux_tc</code>)</td>
+<td><code>research/09-verification-matrix.md</code></td>
+</tr>
+<tr>
+<td>"16 full-attention layers of 40" (DeepSeek)</td>
+<td><strong>36 layers carry a global branch</strong>; only layers 0–1 are pure SWA</td>
+<td>§2.7</td>
+</tr>
+<tr>
+<td><code>16x16x16_iu4</code></td>
+<td><strong><code>v_wmma_i32_16x16x32_iu4</code></strong></td>
+<td>§2.10</td>
+</tr>
+<tr>
+<td>"128 waves total (2 per CU)"</td>
+<td>A <strong>practical floor</strong>, not an architectural limit; a wave is 32 lanes on RDNA4</td>
+<td>A1</td>
+</tr>
+<tr>
+<td>Kimi K3 "3 × 7168 × 3072 per expert"</td>
+<td><strong>3 × 3584 × 3072</strong> (LatentMoE)</td>
+<td>§2.5</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-claims-deliberately-left-unknown">5. Claims deliberately left UNKNOWN<a class="headerlink" href="#5-claims-deliberately-left-unknown" title="Permanent link">&para;</a></h2>
+<p>These are recorded as open. Filling them with a guess would have been worse than leaving
+them.</p>
+<ol>
+<li>Exact street price of the ASRock Rack TURIND8X-2T/500W and GIGABYTE G494-series boards
+   (quote-only SKUs); EPYC 9575F/9655F/9755F street prices.</li>
+<li>Whether <code>HSA_NO_SCRATCH_RECLAIM=1</code> helps on gfx1201 (AMD documents it only for gfx90a).</li>
+<li>RCCL <code>CollNet</code> / <code>Tree</code> performance on a PCIe-only 8 × gfx1201 node — AMD publishes no
+   numbers. Partly moot at TP=2, where Radiance's one-shot all-reduce sidesteps RCCL.</li>
+<li><strong>The ROMED8-2T/BCM PCIe lane map</strong> — which of PCIE1/3/5/7 are CPU-direct, and whether
+   all four support PCIe atomics. This is a <strong>correctness gate for TP=2</strong>, not a footnote.</li>
+<li>Whether 640 GB/s is still achievable at the 210 W cap. The guide never ran a card at
+   300 W; Puget's 310 W for two cards at c=1 shows the cap does not bind at low
+   concurrency.</li>
+<li><strong>Multi-node AMD without RDMA</strong> — not found in any source. Assume unusable. This got
+   <em>more</em> important when the answer to "8 GPUs" became <strong>two quads</strong>, which must talk over
+   ordinary Ethernet.</li>
+<li>Whether the G494-SB0 boards are validated for the non-S R9700 (the manual lists the
+   R9700S only).</li>
+<li><code>hipFile</code> direct-to-GPU on gfx1201 with consumer M.2; no storage vendor has announced
+   certified <code>hipFile</code>/AIS support for ROCm 10.1.</li>
+<li>SGLang HiCache on Radeon with the <code>file</code> L3 backend, and whether its GPU-assisted
+   <code>kernel</code> I/O backend is available on ROCm.</li>
+<li><strong>Which Kimi the build guide actually tested, and the result.</strong> "Kimi" appears exactly
+    once in 93 pages, with no version, method or outcome. Deliberately not guessed.</li>
+<li>Whether the DSA indexer kernels exist for ROCm/gfx1201 at all — scorer, top-k/radix
+    select, sparse latent attention, hybrid memory manager, KDA chunked kernels.</li>
+<li>Whether vLLM-Radiance carries a Kimi K3 path (<code>vllm.models.kimi_k3.amd</code> plus AITER
+    SiTUv2 a4w4 on gfx1201). No evidence that it does.</li>
+<li>The <code>dspark</code> acceptance behaviour on gfx1201, and the <code>hc_head</code> parameters for the
+    SGLang path.</li>
+<li>The exact QSA indexer KV-cache bytes and GDN state for Qwen3.8-Flash-Next at 1 M
+    context — not published.</li>
+<li>A measured TP=8 path for Qwen3.8-Flash-Next; a controlled TP=8 vs 4 × TP=2
+    comparison; a long-context TP=8 latency number; an RCCL busbw number for 8 consumer
+    gfx1201 cards.</li>
+</ol>
+<hr />
+<h2 id="6-what-would-change-the-verdict">6. What would change the verdict<a class="headerlink" href="#6-what-would-change-the-verdict" title="Permanent link">&para;</a></h2>
+<p>The current answer is two proven quads. These are the conditions that would flip it,
+with the threshold where the arithmetic actually turns.</p>
+<table>
+<thead>
+<tr>
+<th>Flip condition</th>
+<th>Threshold</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GLM-5.3-Flash becomes a material share of traffic</strong></td>
+<td><strong>≥ ~30 %</strong> of tokens at ≤ 128 K context</td>
+<td>That is the octo's only exclusive workload; below it, the 20.9 % sync tax and +17 % $/GPU dominate</td>
+</tr>
+<tr>
+<td><strong>A &gt;128 GB working set becomes material</strong></td>
+<td>Flash-Next or a larger MoE in steady production</td>
+<td>The quad runs it at a 31.62 GB deficit; the octo has 96.4 GB headroom — but needs a measured TP=8 path that does not exist yet</td>
+</tr>
+<tr>
+<td><strong>A 48 GB R9700-class card appears</strong></td>
+<td><strong>≤ ~$2,000</strong></td>
+<td>At 384 GB total VRAM, Kimi K3 (330 GB) fits entirely and the octo becomes structurally necessary</td>
+</tr>
+<tr>
+<td><strong>A validated 8-card air chassis ships</strong></td>
+<td>Any retail SKU</td>
+<td>Today the only validated 8-card build is liquid R9700S, and no retail waterblock exists for the Creator card</td>
+</tr>
+<tr>
+<td><strong>DeepSeek V4.1 Flash's software ships</strong></td>
+<td><code>vllm#57491</code> + <code>dspark</code> executing on gfx1201</td>
+<td>Then the octo becomes feasible at <strong>$17.30/Mtok Gen4</strong> — a wash, not a win</td>
+</tr>
+<tr>
+<td><strong>DDR5 prices fall</strong></td>
+<td>32 GB RDIMM back near $300</td>
+<td>The octo's BOM is disproportionately exposed to DDR5; the quad uses DDR4-2666</td>
+</tr>
+<tr>
+<td><strong>Multi-node without RDMA becomes viable</strong></td>
+<td>A measured AMD multi-node path</td>
+<td>Two quads are the answer partly because the alternative is one big failure domain</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-the-agent-route-problem-reproducibility-note">7. The agent-route problem (reproducibility note)<a class="headerlink" href="#7-the-agent-route-problem-reproducibility-note" title="Permanent link">&para;</a></h2>
+<p>This does not affect the findings, but it explains why some sessions produced nothing and
+why the archive has empty threads.</p>
+<table>
+<thead>
+<tr>
+<th>Attempt</th>
+<th>Route</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T3 <code>delegate_task</code> on <code>openrouter/*</code></td>
+<td>qwen3.8 / kimi-k3 / glm-5.3 / deepseek-v4.1</td>
+<td><strong>Blocked by a workspace guardrail</strong> — "N endpoints excluded". Family-scoped; does not clear on its own</td>
+</tr>
+<tr>
+<td>T3 <code>delegate_task</code> on <code>opencode/*</code></td>
+<td>—</td>
+<td>A server restart killed the tool surface mid-run; run bookkeeping went stale</td>
+</tr>
+<tr>
+<td>Native <code>subagent</code> on <code>freellmapi/*</code></td>
+<td>kimi-k3, glm-5.3, deepseek-v4.1-flash, qwen3.8-27b</td>
+<td><strong>Silent death</strong> — empty assistant message, zero tool calls, zero output, while the route reads "ready" on the gateway</td>
+</tr>
+<tr>
+<td>Native <code>subagent</code> on <code>opencode/*</code> zen routes</td>
+<td>beam-free, flint-40b-free, mimo-v2.6, glm-5.3</td>
+<td><strong>Working</strong> — own quota, reliable one-word probe</td>
+</tr>
+<tr>
+<td>Three-platform wave</td>
+<td>six agents on freellmapi / xkiro / logfare</td>
+<td>Five died on <strong>account-wide budget exhaustion</strong>; the sixth returned late with the V100 data that overturned the estimate</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The rule that works:</strong> probe every candidate model with a one-word prompt before
+committing a brief. A route that reads "ready" is not evidence that it will answer.</p>
+<p>The practical consequence for this archive: a thread with <strong>0 assistant messages</strong> is a
+route that died before its first token, not a session that chose to do nothing. The output
+file may still exist because a later route or the supervisor wrote it.</p>
+<hr />
+<h2 id="8-audit-trail">8. Audit trail<a class="headerlink" href="#8-audit-trail" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Artefact</th>
+<th>What it holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>research/00-supervisor-verification.md</code></td>
+<td>The supervisor's direct primary-source reads</td>
+</tr>
+<tr>
+<td><code>research/09-verification-matrix.md</code></td>
+<td>14 contradictions, resolved with the deciding source</td>
+</tr>
+<tr>
+<td><code>research/sweep-log.md</code></td>
+<td>31 scan rounds, every venue, every rejected candidate and why</td>
+</tr>
+<tr>
+<td><code>r9700-4x-builds.md</code></td>
+<td>The live 52-build registry, B1–B52, with per-entry evidence</td>
+</tr>
+<tr>
+<td><code>sources/</code></td>
+<td>Raw pages, JSON, transcripts and extracts behind every B-number</td>
+</tr>
+<tr>
+<td><code>session-archive/</code></td>
+<td>Full transcripts of all 63 T3 threads plus <code>index.json</code></td>
+</tr>
+<tr>
+<td><code>docs/OCTO-VERDICT.md</code></td>
+<td>The 8-card decision, 8 verdicts, 15-row flip table, 8 named risks</td>
+</tr>
+<tr>
+<td><code>docs/BEST-3-4X-R9700-BUILDS.md</code></td>
+<td>The three recommended builds, consolidated</td>
+</tr>
+</tbody>
+</table>
+<p>If a number in this handbook cannot be traced through one of those files to a primary
+source or a measurement, treat it as <strong>UNKNOWN</strong> and re-derive it.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "content.code.copy", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

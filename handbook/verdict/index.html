@@ -1,0 +1,1155 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="State-of-the-art findings from the R9700 build research program">
+      
+      
+        <meta name="author" content="R9700 build program">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../hardware/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Verdict - R9700 SOTA Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#verdict" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="R9700 SOTA Handbook" class="md-header__button md-logo" aria-label="R9700 SOTA Handbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            R9700 SOTA Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Verdict
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="R9700 SOTA Handbook" class="md-nav__button md-logo" aria-label="R9700 SOTA Handbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    R9700 SOTA Handbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verdict
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verdict
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation-1-the-default-the-proven-epyc-7452-quad-1073391" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendation 1 — the default: the proven EPYC 7452 quad ($10,733.91)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation-2-the-throughput-ceiling-radiance-tp4-monolith-on-threadripper-pro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendation 2 — the throughput ceiling: Radiance TP4 monolith on Threadripper PRO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation-3-the-strata-build-what-the-large-moe-stack-actually-needs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendation 3 — the Strata build (what the large-MoE stack actually needs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-every-session-agreed-on-the-non-negotiables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What every session agreed on — the non-negotiables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-not-to-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What not to build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-line-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One-line answer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="One-line answer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evidence-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence trail
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quantisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage & streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build registry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost & TCO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gotchas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gotchas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence & corrections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session ledger
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation-1-the-default-the-proven-epyc-7452-quad-1073391" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendation 1 — the default: the proven EPYC 7452 quad ($10,733.91)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation-2-the-throughput-ceiling-radiance-tp4-monolith-on-threadripper-pro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendation 2 — the throughput ceiling: Radiance TP4 monolith on Threadripper PRO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation-3-the-strata-build-what-the-large-moe-stack-actually-needs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendation 3 — the Strata build (what the large-MoE stack actually needs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-every-session-agreed-on-the-non-negotiables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What every session agreed on — the non-negotiables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-not-to-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What not to build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-line-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One-line answer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="One-line answer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evidence-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence trail
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="verdict">Verdict<a class="headerlink" href="#verdict" title="Permanent link">&para;</a></h1>
+<p><strong>The best 4× R9700 inference platform is the proven EPYC 7452 quad, with two engines at
+TP=2 and Qwen3.8-27B FP8.</strong> If the box must run Strata and large MoE models, upgrade RAM to
+256 GB and the checkpoint store to one 4 TB Gen5 drive. If single-stream latency and
+aggregate throughput matter more than $/token, build the Threadripper PRO Radiance TP4
+monolith instead.</p>
+<p>This page is the decision, not the evidence. Each number is tagged and sourced in the
+chapter that owns it.</p>
+<hr />
+<h2 id="recommendation-1-the-default-the-proven-epyc-7452-quad-1073391">Recommendation 1 — the default: the proven EPYC 7452 quad ($10,733.91)<a class="headerlink" href="#recommendation-1-the-default-the-proven-epyc-7452-quad-1073391" title="Permanent link">&para;</a></h2>
+<p><strong>Build it if you want the lowest-risk 4-card box and you care about cost per token.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPUs</td>
+<td>4 × ASRock Radeon AI PRO R9700 Creator 32 GB (gfx1201), <strong>210 W cap each</strong></td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>AMD EPYC 7452 (Rome, 32C/64T, 128 PCIe 4.0 lanes, 8-channel DDR4) — <strong>$127 used</strong></td>
+</tr>
+<tr>
+<td>Board</td>
+<td>ASRock Rack ROMED8-2T/BCM (AST2600 BMC)</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>8 × 16 GB DDR4-2666 RDIMM = <strong>128 GB</strong> (170.6 GB/s)</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td><strong>one</strong> Samsung 990 PRO 1 TB NVMe</td>
+</tr>
+<tr>
+<td>PSU / case / cooling</td>
+<td>SilverStone HELA 2050R, SilverStone RM44 4U, ARCTIC Freezer 4U-M + 2 × NF-A8</td>
+</tr>
+<tr>
+<td>Software</td>
+<td><strong>vLLM-Radiance</strong> (Radiance patches on ROCm), <strong>2 engines × TP=2</strong>, Qwen3.8-27B FP8 + FP8 KV + MTP</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why it wins:</strong> it is the only 4-card build with published, end-to-end measured throughput
+and cost on this exact silicon.</p>
+<ul>
+<li><strong>493 written tok/s across 12 cards / 3 identical nodes</strong>, i.e. <strong>41.1 tok/s per GPU</strong> on
+  real jobs (MEASURED — guide p.8).</li>
+<li><strong>623 tok/s aggregate at 16 users, 837 W</strong> for one 4-card box (MEASURED — guide p.81).</li>
+<li><strong>$18.15 per million output tokens</strong> on real jobs; break-even vs GPT-5.6 Sol at
+  <strong>3.4 h/week</strong> (DERIVED — <code>docs/ARCHITECTURE.md</code> §7).</li>
+<li>The quad deliberately sidesteps the 128-lane wall that makes an 8-card single-socket
+  build awkward; the 64-lane-class Rome platform is enough because the cards run Gen4 x16
+  in practice.</li>
+</ul>
+<p><strong>The one change to make:</strong> if the workload is Strata / large-MoE expert streaming, buy
+<strong>8 × 32 GB = 256 GB</strong> instead of 8 × 16 GB, and <strong>one 4 TB Gen5 NVMe</strong> instead of the
+1 TB. That is Recommendation 3, and it is the difference between "runs" and "runs without
+streaming from disk".</p>
+<hr />
+<h2 id="recommendation-2-the-throughput-ceiling-radiance-tp4-monolith-on-threadripper-pro">Recommendation 2 — the throughput ceiling: Radiance TP4 monolith on Threadripper PRO<a class="headerlink" href="#recommendation-2-the-throughput-ceiling-radiance-tp4-monolith-on-threadripper-pro" title="Permanent link">&para;</a></h2>
+<p><strong>Build it if single-stream latency and maximum aggregate tok/s matter more than $/token.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPUs</td>
+<td>4 × R9700, <strong>211 W cap</strong>, all four on <strong>CPU-direct PCIe 5.0 x16</strong>, P2P between every pair</td>
+</tr>
+<tr>
+<td>CPU / board</td>
+<td>Threadripper PRO 9955WX + ASRock WRX90 WS EVO (or equivalent WRX90)</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>122–128 GB DDR5</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>1–2 TB Gen5 NVMe</td>
+</tr>
+<tr>
+<td>Software</td>
+<td><strong>Radiance (standalone C++/HIP) TP4</strong> with <code>ar_oneshot_4rank</code> + <code>--tp-wire exact</code>; Qwen3.8-Flash-Next</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Measured result (MEASURED — <code>r/LocalLLM 1xe1u1i</code>, LlamaPerf report):</strong></p>
+<ul>
+<li><strong>236 tok/s single stream</strong>, 371 @2, 591 @4, 890 @8, <strong>1,192 tok/s @16 concurrent</strong>;
+  <strong>11.27 ms/step</strong>.</li>
+<li>That is roughly <strong>3×</strong> the same box on llama.cpp + speculative decode (65–75 tok/s), and
+  ~45 % ahead of 2 × TP2.</li>
+<li>A second, independent Gen4 box (EPYC 7R13, 256 GB DDR4-3200) reproduces <strong>~7.8–8.2k
+  prefill and 170–244 tok/s TG from 100k to 250k context</strong> with tuned flags (MEASURED — B18).</li>
+</ul>
+<p><strong>Minimum viable recipe (all verified):</strong></p>
+<ul>
+<li><code>NCCL_PROTO=Simple</code> for any RCCL path — the gfx1201 tuning-index bug deadlocks TP ≥ 2
+  otherwise.</li>
+<li><code>GPU_MAX_HW_QUEUES=1</code> — fixes the gfx1201 slow-dispatch state (seen on 6/8 boots;
+  139 → 210 tok/s).</li>
+<li>BIOS ACS <strong>disabled</strong> for real P2P (19.7 vs 11.6 GB/s busbw); each KFD node must list
+  <strong>3 p2p_links</strong>.</li>
+<li><code>--tp-wire exact</code> is the safe default: <code>wht6</code> at 4 ranks is a tiered int8 + Hadamard wire,
+  not 6-bit, and it is lossy above 128 KiB messages for ~2 % prefill.</li>
+<li><strong>Cap power at 210–211 W.</strong> Capping 4 cards to 210 W <em>doubled</em> gpt-oss-120b TP4 decode
+  (44.6 → 89.4 tok/s) in one measured build; <code>amdgpu.ras_enable=0</code> doubled another
+  (40 → 97 tok/s). Neither is a thermal effect.</li>
+</ul>
+<p><strong>Cost:</strong> roughly <strong>$18k–$25k</strong> depending on TR Pro SKU, DDR5 and PSU. You are paying ~2×
+Recommendation 1 for ~2–3× the peak throughput; the $/token is worse, the latency is better.</p>
+<hr />
+<h2 id="recommendation-3-the-strata-build-what-the-large-moe-stack-actually-needs">Recommendation 3 — the Strata build (what the large-MoE stack actually needs)<a class="headerlink" href="#recommendation-3-the-strata-build-what-the-large-moe-stack-actually-needs" title="Permanent link">&para;</a></h2>
+<p><strong>Build it if the box will run Strata + Qwen3.8-Flash-Next / DeepSeek V4.1-Flash.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Do <strong>not</strong> buy</th>
+<th>Buy instead</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RAM</td>
+<td>8 × 16 GB (128 GB)</td>
+<td><strong>8 × 32 GB (256 GB)</strong></td>
+<td>Strata's own model page: the model fits when <strong>RAM ≥ experts + ~10 GB</strong>; a bigger GPU does <strong>not</strong> lower the RAM needed. At 128 GB the ceiling is UD-Q5_K_XL; Q6_K_XL (118 GB) and Q8_0 (136 GB) fall into <code>--mmap-experts</code> low-RAM mode, where one measured box spent <strong>82 % of every token waiting on the host stream</strong> (36 → 79 tok/s only once experts were resident).</td>
+</tr>
+<tr>
+<td>SSD</td>
+<td>8 × 256 GB NVMe in RAID0</td>
+<td><strong>2 × 2 TB (or 1 × 4 TB) Gen5, striped</strong></td>
+<td>256 GB drives have 2–4 NAND packages (~2–3.5 GB/s each); eight ≈ 16–28 GB/s — the same as two 2 TB Gen5 drives, at 4× the lanes and 4× the failure domains. DeepSeek packs are 239–274 GB, so 2 TB is thin.</td>
+</tr>
+<tr>
+<td>Everything else</td>
+<td>—</td>
+<td>keep the 4 × R9700 + Threadripper PRO</td>
+<td>Strata lists "four R9700 cards (Linux)" as tested hardware for DeepSeek V4.1-Flash.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical software fact:</strong> Strata does <strong>layer split + expert streaming</strong>, not tensor
+parallel — there is no <code>--tp 4</code>. And Qwen3.8-Flash-Next has only <strong>2 KV heads</strong>, so clean TP
+sharding tops out at <strong>TP=2</strong>; vLLM uses expert parallel for it. That is why the Strata box
+wants capacity and host bandwidth, not a TP4 all-reduce.</p>
+<p>Keep the n-gram table on its own drive (it is read randomly and stays on SSD), and keep M.2
+on CPU lanes — a chipset x16 slot has no PCIe atomics and RCCL fails there.</p>
+<hr />
+<h2 id="what-every-session-agreed-on-the-non-negotiables">What every session agreed on — the non-negotiables<a class="headerlink" href="#what-every-session-agreed-on-the-non-negotiables" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>4 cards is the sweet spot; 6 is wrong.</strong> TP works at 2/4/8; 1,200 W of GPU already sits near a 120 V branch limit.</td>
+<td>r/LocalLLaMA 1pkrnpo; <code>r9700-4x-builds.md</code> B20</td>
+</tr>
+<tr>
+<td><strong>Use vLLM-Radiance / Radiance, not stock vLLM.</strong> Stock on the same dual-card box: 15.88 → 156.21 tok/s; Radiance 32.00 → 198.78; +MTP 62.75 → 320.23.</td>
+<td>Puget; <code>docs/ARCHITECTURE.md</code> §4</td>
+</tr>
+<tr>
+<td><strong>TP=2 per engine × 2 engines for dense 27B; TP=4 only for MoE.</strong> 27B FP8 + 262K KV does not fit one 32 GB card.</td>
+<td>guide p.149; ARCHITECTURE §4</td>
+</tr>
+<tr>
+<td><strong>210 W cap, set at every boot.</strong> It reverts after a cold power-off.</td>
+<td>guide p.114</td>
+</tr>
+<tr>
+<td><strong><code>NCCL_PROTO=Simple</code></strong> on any RCCL path; otherwise TP≥2 deadlocks.</td>
+<td>Level1Techs 250504; ROCm/rccl PR #2166</td>
+</tr>
+<tr>
+<td><strong>CPU-direct lanes only.</strong> Chipset slots break RCCL/TP. PCIe 4.0 x16 ≈ 28.4 GB/s in practice, not Gen5's 63.</td>
+<td>Puget; michal-koniu notes</td>
+</tr>
+<tr>
+<td><strong>One NVMe checkpoint store is enough</strong> for the proven build. A multi-SSD array only makes sense for Strata expert streaming, and then as 2–4 large drives, not 8 small ones.</td>
+<td>guide; thread <code>321464d6</code></td>
+</tr>
+<tr>
+<td><strong>Do not mix vendors in one TP group.</strong> Adding an RTX 4500 Ada <em>lost</em> throughput on every model tested; an R9700 alone beat R9700 + 7800 XT.</td>
+<td>r/LocalLLaMA 1xhq12y, 1xcpbqd</td>
+</tr>
+<tr>
+<td><strong>Validate any AITER-linear run.</strong> Forcing it at TP≥2 with per-rank K not a multiple of 1024 emits NaN.</td>
+<td>vllm#28649 (xy7ra)</td>
+</tr>
+<tr>
+<td><strong>Bare metal, not KVM/VFIO.</strong> <code>ncclCommInitRank</code> hangs under passthrough even with full 27.6 GB/s P2P; bare metal initialises in 0.12 s.</td>
+<td>ARCHITECTURE §9</td>
+</tr>
+<tr>
+<td><strong>IOMMU stays in translated mode.</strong> <code>iommu=pt</code> causes silent P2P corruption on gfx1201 — peer reads return <code>0xFF</code>, writes are dropped.</td>
+<td>A8 §2; verified on the box</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="what-not-to-build">What not to build<a class="headerlink" href="#what-not-to-build" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>8 GPUs on one 128-lane socket</strong> — the lane wall is real; the quad avoids it. Going 4 → 8
+  added only ~14 % throughput in the one measured upgrade (c1 173.5 → c8 510.2).</li>
+<li><strong>gpt-oss-120B in BF16</strong> — 0.2 tok/s at TP4; it needs MXFP4/Quark.</li>
+<li><strong>DeepSeek V4.1-Flash's 510 GB FP8 checkpoint through vLLM <code>cpu_offload</code></strong> — not viable.
+  The <strong>Strata ISTA packs (239–274 GB, 46–64 GB RAM)</strong> are the viable route and are the ones
+  actually tested on four R9700s.</li>
+<li><strong>6 cards</strong> — TP works at 2/4/8, and non-power-of-two counts can refuse to load entirely.</li>
+<li><strong>8 × 16 GB with Strata</strong> — falls into low-RAM mode.</li>
+<li><strong>8 × 256 GB RAID0</strong> — same bandwidth as two large drives, 4× the lanes and failure domains.</li>
+<li><strong>Stock fan curves</strong> — they follow the CPU and pause the run at the 68 °C card-area warning.</li>
+<li><strong><code>--enforce-eager</code></strong> — it roughly halves decode.</li>
+</ul>
+<hr />
+<h2 id="one-line-answer">One-line answer<a class="headerlink" href="#one-line-answer" title="Permanent link">&para;</a></h2>
+<p><strong>Buy Recommendation 1</strong> — the $10,733.91 EPYC 7452 quad, 4 × R9700 at 210 W, 128 GB
+DDR4-2666, one 1 TB NVMe, vLLM-Radiance at 2 × TP=2. It is the only measured $/token anchor
+on this part (623 tok/s @16 users, 837 W, $18.15/Mtok, 3.4 h/week break-even). <strong>Upgrade RAM
+to 256 GB and one 4 TB Gen5 drive if the box runs Strata.</strong> <strong>Choose the TR PRO 9955WX/WRX90
+Radiance TP4 monolith only if 236 tok/s single-stream / 1,192 tok/s aggregate is worth
+roughly double the spend.</strong></p>
+<hr />
+<h3 id="evidence-trail">Evidence trail<a class="headerlink" href="#evidence-trail" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>research/external/quad-r9700-build-guide.txt</code> — BOM p.107–132, 493 tok/s p.256, 210 W p.1708–1719, 623 tok/s p.81</li>
+<li><code>docs/ARCHITECTURE.md</code> §0.5, §4, §7 — 623 tok/s / 837 W, TP2×2 rule, $18.15/Mtok, 3.4 h break-even</li>
+<li><code>docs/REAL-4X-BUILDS.md</code> — 13-build registry (superseded by the 52-build live registry)</li>
+<li><code>r9700-4x-builds.md</code> — B1–B52, engine matrix §2, power/cooling §4, gotchas</li>
+<li><code>research/TP4-r9700-builds.md</code> — 27 TP4 sources, headline table</li>
+<li><code>research/4x-r9700-builds-summary.md</code> — build summary + cost analysis</li>
+<li>Threads: <code>99e49061</code> (TP4 scan), <code>e9560937</code> (13-build registry), <code>2cd3feea</code> (append-only scan), <code>321464d6</code> (Strata build review), <code>93b2a1e8</code> (platform comparison), <code>03293844</code> (8-hour sweep, B1–B52)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "content.code.copy", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
